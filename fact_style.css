@@ -1,0 +1,43 @@
+﻿.factbox {
+  display: inline-block;
+  padding: 16px;
+  margin: 10px 0;
+  width: 575px;
+  border: #ddd 1px solid;
+  border-top-color: #eee;
+  border-bottom-color: #bbb;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  font: bold 14px/18px Helvetica, Arial, sans-serif;
+  color: #000;
+}
+
+.fact {
+    width: 40%;
+    display: inline-block;
+}
+
+.fact-text {
+    font: 20px Times, serif;
+    float: left;
+}
+
+.image {
+    width: 25%;
+    height: 100%;
+    float: left;
+    overflow: auto;
+    margin: auto 2%;
+}
+
+.logo {
+}
+
+.rating-image {
+    float: right;
+}
+
+.image img {
+    width: 100%
+
+}
