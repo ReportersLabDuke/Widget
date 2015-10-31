@@ -57,9 +57,10 @@ httpGetAsync("https://spreadsheets.google.com/feeds/list/" + google_id + "/od6/p
             title = json_obj.feed.entry[row_id].gsx$fact.$t;
             rating = json_obj.feed.entry[row_id].gsx$rating.$t;
             speaker = json_obj.feed.entry[row_id].gsx$speaker.$t;
-            logo_image = json_obj.feed.entry[row_id].gsx$logoimage.$t;
+            logo_image = json_obj.feed.entry[1].gsx$logoimage.$t;
             rating_image = json_obj.feed.entry[row_id].gsx$ratingimage.$t;
             rating_text = json_obj.feed.entry[row_id].gsx$ratingtext.$t;
+            rating_description = json_obj.feed.entry[row_id].gsx$ratingdescription.$t;
         }
         else {
             title = "Error retrieving title";
@@ -68,11 +69,15 @@ httpGetAsync("https://spreadsheets.google.com/feeds/list/" + google_id + "/od6/p
             logo_image = "";
             rating_image = "";
             rating_text = "";
+            rating_description = "";
         }
 
         scriptTag.parentNode.insertBefore(div, scriptTag);
         if (rating_text != "") {
             rating_text_with_label = 'Rating: ' + rating_text;
+        }
+        else if (rating_description != "") {
+            rating_text_with_label = 'Rating: ' + rating_description;
         }
         else { rating_text_with_label = '';}
 
