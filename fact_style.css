@@ -2,7 +2,7 @@
   display: inline-block;
   padding: 16px;
   margin: 10px 0;
-  width: 575px;
+  max-width: 575px;
   border: #ddd 1px solid;
   border-top-color: #eee;
   border-bottom-color: #bbb;
@@ -22,7 +22,7 @@
     float: left;
 }
 
-.image {
+.left-box {
     width: 25%;
     height: 100%;
     float: left;
@@ -31,13 +31,46 @@
 }
 
 .logo {
+    width: 100%;
 }
 
-.rating-image {
+.right-box {
     float: right;
+    width: 24%;
+    height: 100%;
+    overflow: auto;
+    margin: auto 2%;
 }
 
-.image img {
-    width: 100%
+img.image {
+    width: auto;
+    max-width: 100%;
+    margin: 5px 0px;
+    max-height: 80px;
 
 }
+
+.subtext {
+    font-size: 10px;
+    font-weight: lighter;
+}
+
+#embed-box {
+    display:none;
+}
+
+@media screen and (max-width: 400px) {
+
+    .factbox {
+        max-width: 375px;
+        width: auto;
+    }
+
+   .container { 
+    float: none;
+    margin: 10px; 0px;
+    width:auto;
+    border:0;
+  }
+}
+
