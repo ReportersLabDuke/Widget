@@ -17,7 +17,7 @@ var scriptTag = scriptTags[0];
 
 var me = document.currentScript.getAttribute('id');
 
-var insert_div = document.createElement('div');
+//var insert_div = document.createElement('div');
 
     // add a style tag to the head
 
@@ -46,6 +46,11 @@ styleTag.media = "all";
 
 //document.lastChild.firstChild.appendChild(styleTag);
 document.getElementsByTagName('head')[0].appendChild(styleTag);
+[].forEach.call(document.querySelectorAll('[data-sheet]'), function (insert_div) {
+    sheet = insert_div.attributes['data-sheet'].value;
+    row = parseInt(insert_div.attributes['data-row'].value, 10);
+    createHtml(sheet, row, insert_div);
+});
 
 var MYLIBRARY = MYLIBRARY;
 google_sheet_id = MYLIBRARY[0];
@@ -56,11 +61,8 @@ function showEmbed() {
     document.getElementById('embed-box').style.display = 'block';
 }
 
-function hello() {
-    console.log("hello");
-}
 
-(function (google_id, row_id, div) {
+function createHtml (google_id, row_id, div) {
     httpGetAsync("https://spreadsheets.google.com/feeds/list/" + google_id + "/od6/public/values?alt=json-in-script&callback=listEntries",
         function (error, response) {
             if (error == null) {
@@ -88,10 +90,12 @@ function hello() {
 
             scriptTag.parentNode.insertBefore(div, scriptTag);
             if (rating_text != "") {
-                rating_text_with_label = 'Rating: ' + rating_text;
+                rating_text_with_label = '<h2>Rating: ' + rating_text + '<\/h2>';
+                rating_summary = '<img src=\"' + rating_image + '\" alt=\"Rating\">'
             }
             else if (rating_description != "") {
-                rating_text_with_label = 'Rating: ' + rating_description;
+                rating_summary = '<h3>Rating: ' + rating_description + '<\/h3>';
+                rating_text_with_label = '';
             }
             else { rating_text_with_label = ''; }
 
@@ -102,11 +106,11 @@ function hello() {
                 '<img class=\"image speaker\" src=\"' + speaker_image + '\" alt=\"Speaker\"><\/div>' +
                 '<div class=\"fact container\"> <div class=\"fact-text\">\n   "' + title + '"<\/div>' +
                 '<div class=\"fact-speaker\"> -' + speaker + '<\/div>' +
-                '\n<div class=\"fact-rating\">\n <h2>' + rating_text_with_label + '<\/h2> <\/div><\/div>' +
-                '<div class=\"right-box container\"><img src=\"' + rating_image + '\" alt=\"Rating\"><a class=\"subtext\" href=\"#\" onclick=\"showEmbed()\">embed this<\/a><\/div>' +
+                '\n<div class=\"fact-rating\">\n ' + rating_text_with_label + ' <\/div><\/div>' +
+                '<div class=\"right-box container\">' + rating_summary +  '<a class=\"subtext\" href=\"#\" onclick=\"showEmbed()\">embed this<\/a><\/div>' +
                 '\n' +
                 '<div id=\"embed-box\"><p>Copy and paste this embed code into your site:<\/p><textarea rows=\"4\" cols=\"50\">' + embed_text + '<\/textarea><\/div><\/div>\n\n';
 
         });
-})(google_sheet_id, row, insert_div);
+};
 
