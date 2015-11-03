@@ -52,10 +52,6 @@ document.getElementsByTagName('head')[0].appendChild(styleTag);
     createHtml(sheet, row, insert_div);
 });
 
-var MYLIBRARY = MYLIBRARY;
-google_sheet_id = MYLIBRARY[0];
-row = MYLIBRARY[1];
-
 
 function showEmbed() {
     document.getElementById('embed-box').style.display = 'block';
