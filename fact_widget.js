@@ -100,7 +100,7 @@ function createHtml (google_id, row_id, div) {
             div.innerHTML = '<div class=\"factbox\">\n' +
                 '<div class=\"left-box container\"><img class=\"image logo\" src=\"' + logo_image + '\" alt=\"Rater\">' +
                 '<img class=\"image speaker\" src=\"' + speaker_image + '\" alt=\"Speaker\"><\/div>' +
-                '<div class=\"fact container\"> <div class=\"fact-text\">\n   "' + title + '"<\/div>' +
+                '<div class=\"fact container\"> <div class=\"fact-text\">\n   ' + title + '<\/div>' +
                 '<div class=\"fact-speaker\"> -' + speaker + '<\/div>' +
                 '\n<div class=\"fact-rating\">\n ' + rating_text_with_label + ' <\/div><\/div>' +
                 '<div class=\"right-box container\">' + rating_summary +  '<a class=\"subtext\" href=\"#\" onclick=\"showEmbed()\">embed this<\/a><\/div>' +
