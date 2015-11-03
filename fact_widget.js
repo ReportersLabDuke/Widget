@@ -15,7 +15,7 @@
 var scriptTags = document.getElementsByTagName('script');
 var scriptTag = scriptTags[0];
 
-var me = document.currentScript.getAttribute('id');
+//var me = document.currentScript.getAttribute('id');
 
 //var insert_div = document.createElement('div');
 
