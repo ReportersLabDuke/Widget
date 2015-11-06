@@ -9,9 +9,8 @@
     <h1>Fact Checking Widgets</h1>
     <div id="test"></div>
     <script type="text/javascript" class="fact_widget_script">
-        locked = false;
-        if (!locked) {
-            locked = true;
+        if (locked == null && !locked) {
+            var locked = true;
             var s = document.createElement('script');
             s.type = 'text/javascript';
             s.async = true;
@@ -30,7 +29,7 @@
     </div>
 
     <script type="text/javascript" class="fact_widget_script">
-        if (locked != null && !locked) {
+        if (locked == null && !locked) {
             var locked = true;
             var s = document.createElement('script');
             s.type = 'text/javascript';
