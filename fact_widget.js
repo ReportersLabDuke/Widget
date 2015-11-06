@@ -15,7 +15,7 @@
 var scriptTags = document.getElementsByTagName('script');
 var scriptTag = scriptTags[0];
 
-var me = document.currentScript.getAttribute('id');
+//var me = document.currentScript.getAttribute('id');
 
 //var insert_div = document.createElement('div');
 
@@ -53,9 +53,10 @@ document.getElementsByTagName('head')[0].appendChild(styleTag);
 });
 
 
-
-function showEmbed() {
-    document.getElementById('embed-box').style.display = 'block';
+function showEmbed(e) {
+    var target = e;
+    factbox = target.parentNode.parentNode;
+    factbox.getElementsByClassName('embed-box')[0].style.display = 'block';
 }
 
 
@@ -85,7 +86,7 @@ function createHtml (google_id, row_id, div) {
                 rating_description = "";
             }
 
-            scriptTag.parentNode.insertBefore(div, scriptTag);
+            //scriptTag.parentNode.insertBefore(div, scriptTag);
             if (rating_text != "") {
                 rating_text_with_label = '<h2>Rating: ' + rating_text + '<\/h2>';
                 rating_summary = '<img src=\"' + rating_image + '\" alt=\"Rating\">'
@@ -104,9 +105,9 @@ function createHtml (google_id, row_id, div) {
                 '<div class=\"fact container\"> <div class=\"fact-text\">\n   ' + title + '<\/div>' +
                 '<div class=\"fact-speaker\"> -' + speaker + '<\/div>' +
                 '\n<div class=\"fact-rating\">\n ' + rating_text_with_label + ' <\/div><\/div>' +
-                '<div class=\"right-box container\">' + rating_summary +  '<a class=\"subtext\" href=\"#\" onclick=\"showEmbed()\">embed this<\/a><\/div>' +
+                '<div class=\"right-box container\">' + rating_summary +  '<a class=\"subtext\" href=\"#\" onclick=\"showEmbed(this)\">embed this<\/a><\/div>' +
                 '\n' +
-                '<div id=\"embed-box\"><p>Copy and paste this embed code into your site:<\/p><textarea rows=\"4\" cols=\"50\">' + embed_text + '<\/textarea><\/div><\/div>\n\n';
+                '<div class=\"embed-box\"><p>Copy and paste this embed code into your site:<\/p><textarea rows=\"4\" cols=\"50\">' + embed_text + '<\/textarea><\/div><\/div>\n\n';
 
         });
 };
